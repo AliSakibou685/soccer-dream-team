@@ -9,7 +9,7 @@ const app = express();
 
 // Set the port from environment variable or default to 3000
 const port = process.env.PORT || "3000";
-
+console.log(process.env.MONGODB_URI);
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on("connected", () => {
@@ -51,12 +51,12 @@ app.get('/', (req, res) => {
 // The "starts with" path is pre-pended to the paths
 // defined in the router module
 app.use('/auth', require('./controllers/auth'));
-
-app.use('/unicorns', require('./controllers/unicorns'));
-
 // Any requests that get this far must have a signed in 
 // user thanks to ensureSignedIn middleware
 app.use(require('./middleware/ensure-signed-in'));
+app.use('/players', require('./controllers/players'));
+
+
 // Any controller/routes mounted below here will have
 // ALL routes protected by the ensureSignedIn middleware
 
