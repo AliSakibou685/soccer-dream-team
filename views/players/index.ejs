@@ -1,0 +1,10 @@
+<%- include('../partials/header.ejs') %> <% if (applications.length) { %>
+    <ul>
+      <% players.forEach((player) => { %>
+      <li>
+        <a href="/players/<%= player._id %>"
+          ><%= player.name %> 
+      </li>
+      <% }) %>
+    </ul>
+    

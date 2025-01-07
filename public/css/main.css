@@ -8,7 +8,7 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background-image: url('https://www.statnews.com/wp-content/uploads/2024/12/digital-health-unicorns-1600x900.jpg');
+  background-image: url('..//imgur.com/ksIZBue');
 }
 
 nav,

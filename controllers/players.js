@@ -10,12 +10,12 @@ const ensureSignedIn = require('../middleware/ensure-signed-in');
 
 // GET /players (index functionality) UN-PROTECTED - all users can access
 router.get('/', (req, res) => {
-  res.send('Rejoice - the unicorns are here!');
+  res.render('players/index.ejs');
 });
 
 // GET /unicorns/new (new functionality) PROTECTED - only signed in users can access
 router.get('/new', ensureSignedIn, (req, res) => {
-  res.render('unicorns/add-team.ejs');
+  res.render('players/new.ejs');
 });
 
 

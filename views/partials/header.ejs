@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body>
+    <title>Dream Team</title>
     <nav>
       <a href="/">🏠</a>
       <div>
         <!-- Above renders whether signed in or not -->
         <% if (user) { %>
-        <a href="/unicorns/players">All Players</a>
-        <a href="/unicorns/new">Add Team</a>
+        <a href="/players">Add Players</a>
+        <a href="/new">Add Team</a>
         <a href="/auth/sign-out">SIGN OUT</a>
         <span><%= user.username %></span>
         <% } else { %>
@@ -21,7 +22,6 @@
         <a href="/auth/sign-in">SIGN IN</a>
         <% } %>
       </div>
-      <Title>Dream Team</Title>
     </nav>
     <main>
 
