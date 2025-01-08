@@ -22,12 +22,12 @@ router.get('/new', ensureSignedIn, (req, res) => {
 // Get /players/:id (show functionality/action)
 router.get('/:playerId', async (req, res) => {
   const player = await Player.findById(req.params.playerId);
-  res.render('players/show.ejs', {title: `Player in ${player.team}`, player});
+  res.render('players/show.ejs', {title: `Detail for player ${player.name}`, player});
   });
   
 
 
-// Post /players (new functionality) PROTECTED - only signed in users can access
+// Post /players (Create functionality) PROTECTED - only signed in users can access
 router.post('/', ensureSignedIn, async(req, res) => {
   console.log(req.user)
   try {
@@ -48,10 +48,20 @@ router.delete('/:id', async (req, res) => {
 }); 
 // GET /players/:id/edit (edit functionality/action)
 router.get('/:id/edit', async (req, res) => {
-  const player = await Player.findById(req.params.playerId);
-  res.render('players/edit.ejs', {title: `Player in ${player.team}`, player});
-  });
+  const player = await Player.findById(req.params.id);
+  res.render('players/edit.ejs', {title: `Edit player ${player.name}`, player});
+});
 
+// PUT /players/:id (update functionality)
+router.put ('/:id', async (req, res) => {
+  try { 
+    await Player.findByIdAndUpdate(req.params.id, req.body );
+    res.redirect(`/players/${req.params.id}`);
+  } catch (e) {
+    console.log(e);
+    res.redirect('/players');
+  }
+});
 
 
 module.exports = router;
