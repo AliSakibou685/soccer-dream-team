@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const user = require("./user");
 // Shortcut variable
 const Schema = mongoose.Schema;
 
 const playerSchema = new Schema({
-  playername: {
+  name: {
     type: String,
     required: true,
   },
@@ -15,6 +16,11 @@ const playerSchema = new Schema({
     type: Number,
     required: true
   },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
 });
 
 module.exports = mongoose.model("Player", playerSchema);

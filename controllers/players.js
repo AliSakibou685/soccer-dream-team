@@ -9,31 +9,29 @@ const ensureSignedIn = require('../middleware/ensure-signed-in');
 // All routes start with '/players'
 
 // GET /players (index functionality) UN-PROTECTED - all users can access
-router.get('/', (req, res) => {
-  res.render('players/index.ejs');
+router.get('/', async (req, res) => {
+  const players = await Player.find({user: req.user._id})
+  res.render('players/index.ejs', {title: 'My Dream Team', players});
 });
 
-// GET /unicorns/new (new functionality) PROTECTED - only signed in users can access
+// GET /players/new (new functionality) PROTECTED - only signed in users can access
 router.get('/new', ensureSignedIn, (req, res) => {
   res.render('players/new.ejs');
 });
 
 
-// GET /unicorns/new (new functionality) PROTECTED - only signed in users can access
-router.get('/players', ensureSignedIn, (req, res) => {
-  res.render('players.ejs', { title: 'Players!' })
-});
 
-// GET /unicorns/new (new functionality) PROTECTED - only signed in users can access
-router.post('/add-player', ensureSignedIn, async(req, res) => {
+
+// GET /new (new functionality) PROTECTED - only signed in users can access
+router.post('/', ensureSignedIn, async(req, res) => {
   try {
-    if (req.body.age < 18 ) throw new Error('Player has to be more than 18');
+    req.body.user = req.user._id;
     const player = await Player.create( req.body );
-    const players = await Player.find({});
-    res.render('unicorns/show-players.ejs', { players: players});
+    console.log(players);
+    res.redirect('/players');
   } catch (e) {
     console.log(e);
-    res.render('unicorns/players.ejs');
+    res.render('players/new.ejs');
   }
 });
 

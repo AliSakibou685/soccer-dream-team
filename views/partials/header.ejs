@@ -13,8 +13,8 @@
       <div>
         <!-- Above renders whether signed in or not -->
         <% if (user) { %>
-        <a href="/players">Add Players</a>
-        <a href="/new">Add Team</a>
+        <a href="/players">My Dream Team</a>
+        <a href="/players/new">Add Player</a>
         <a href="/auth/sign-out">SIGN OUT</a>
         <span><%= user.username %></span>
         <% } else { %>
