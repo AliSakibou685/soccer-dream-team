@@ -42,7 +42,7 @@ router.post('/', ensureSignedIn, async(req, res) => {
 });
 
 // DELETE /players/:id (delete functionality/action)
-router.delete('/player/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   await Player.findByIdAndDelete(req.params.id);
   res.redirect('/players');
 }); 
