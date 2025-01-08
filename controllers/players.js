@@ -19,21 +19,34 @@ router.get('/new', ensureSignedIn, (req, res) => {
   res.render('players/new.ejs');
 });
 
+//Show
+router.get('/:playerId', async (req, res) => {
+  const player = await Player.findById(req.params.playerId);
+  res.render('players/show.ejs', {title: `Player in ${player.team}`, player});
+  });
+  
 
 
-
-// GET /new (new functionality) PROTECTED - only signed in users can access
+// Post /players (new functionality) PROTECTED - only signed in users can access
 router.post('/', ensureSignedIn, async(req, res) => {
+  console.log(req.user)
   try {
     req.body.user = req.user._id;
     const player = await Player.create( req.body );
-    console.log(players);
+    console.log(player);
     res.redirect('/players');
   } catch (e) {
     console.log(e);
     res.render('players/new.ejs');
   }
 });
+
+// DELETE /applications/:id (delete functionality/action)
+router.delete('/:id', async (req, res) => {
+  req.user.players.pull(req.params.id);
+  await req.user.save();
+  res.redirect('/players');
+}); 
 
 
 module.exports = router;
