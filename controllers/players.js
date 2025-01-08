@@ -42,13 +42,16 @@ router.post('/', ensureSignedIn, async(req, res) => {
 });
 
 // DELETE /players/:id (delete functionality/action)
-router.delete('/:id', async (req, res) => {
-  req.user.players.pull(req.params.id);
-  await req.user.save();
+router.delete('/player/:id', async (req, res) => {
+  await Player.findByIdAndDelete(req.params.id);
   res.redirect('/players');
 }); 
 // GET /players/:id/edit (edit functionality/action)
-router.get('/:id/edit', (req, res) => {
-  const player = req.user.players.id(req.params.id);
-  res.render('players/edit.ejs', { title: 'Edit Players', player});
-});
+router.get('/:id/edit', async (req, res) => {
+  const player = await Player.findById(req.params.playerId);
+  res.render('players/edit.ejs', {title: `Player in ${player.team}`, player});
+  });
+
+
+
+module.exports = router;

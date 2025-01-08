@@ -2,13 +2,17 @@
 <p>Player Nationality: <%= player.nationality %> </p>
 <p>Player Age: <%= player.age %></p>
 
-<a href="/players/<%= players._id %>/edit">EDIT</a>
-
 <form
   action="/players/<%= player._id %>?_method=DELETE"
   method="POST"
 >
   <button type="submit">DELETE</button>
+</form>
+<form
+  action="/players/<%= player._id %>?_method=EDIT"
+  method="POST"
+>
+  <button type="submit">EDIT</button>
 </form>
 
 <%- include('../partials/footer.ejs') %>

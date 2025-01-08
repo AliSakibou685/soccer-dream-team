@@ -1,5 +1,30 @@
 <%- include('../partials/header.ejs') %>
 <h1>Edit Player</h1>
 <form action="/players/<%= player._id %>?_method=PUT" method="POST">
-<button type="submit">Save</button>
+    <label for="name">Name</label>
+    <input 
+        type="text"
+        name="name"
+        id="name"
+        value="<% player.name %>"
+        required
+        />
+
+        <label for="nationality">Nationality</label>
+        <input 
+            type="text"
+            name="nationality"
+            id="nationality"
+            value="<% player.nationality %>"
+            required
+        />
+        <label for="age">Age</label>
+        <input 
+            type="text"
+            name="age"
+            id="age"
+            value="<% player.age %>"
+            required
+        />
+<button type="submit">Edit Player</button>
 <%- include('../partials/footer.ejs') %>
