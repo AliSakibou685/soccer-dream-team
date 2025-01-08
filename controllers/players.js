@@ -19,7 +19,7 @@ router.get('/new', ensureSignedIn, (req, res) => {
   res.render('players/new.ejs');
 });
 
-//Show
+// Get /players/:id (show functionality/action)
 router.get('/:playerId', async (req, res) => {
   const player = await Player.findById(req.params.playerId);
   res.render('players/show.ejs', {title: `Player in ${player.team}`, player});
@@ -41,12 +41,14 @@ router.post('/', ensureSignedIn, async(req, res) => {
   }
 });
 
-// DELETE /applications/:id (delete functionality/action)
+// DELETE /players/:id (delete functionality/action)
 router.delete('/:id', async (req, res) => {
   req.user.players.pull(req.params.id);
   await req.user.save();
   res.redirect('/players');
 }); 
-
-
-module.exports = router;
+// GET /players/:id/edit (edit functionality/action)
+router.get('/:id/edit', (req, res) => {
+  const player = req.user.players.id(req.params.id);
+  res.render('players/edit.ejs', { title: 'Edit Players', player});
+});

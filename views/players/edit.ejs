@@ -1,3 +1,5 @@
 <%- include('../partials/header.ejs') %>
 <h1>Edit Player</h1>
+<form action="/players/<%= player._id %>?_method=PUT" method="POST">
+<button type="submit">Save</button>
 <%- include('../partials/footer.ejs') %>
