@@ -1,4 +1,13 @@
 <%- include('../partials/header.ejs') %>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    color: #4e4141;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+</style>
 <h1>Edit Player</h1>
 <form action="/players/<%= player._id %>?_method=PUT" method="POST">
     <label for="name">Name</label>
