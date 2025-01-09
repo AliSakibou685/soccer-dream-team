@@ -8,7 +8,9 @@ body {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  background-image: url('..//imgur.com/ksIZBue');
+  background-image: url('https://i.imgur.com/ksIZBue.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 nav,

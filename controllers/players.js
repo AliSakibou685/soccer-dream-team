@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 // GET /players/new (new functionality) PROTECTED - only signed in users can access
 router.get('/new', ensureSignedIn, (req, res) => {
-  res.render('players/new.ejs');
+  res.render('players/new.ejs' , {title: 'Add New Player'});
 });
 
 // Get /players/:id (show functionality/action)
