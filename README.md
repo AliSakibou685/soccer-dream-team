@@ -13,6 +13,11 @@ This is a page where you can add edit and update a player to create a soccer dre
 - HTML
 - CSS
 - CardStarter CSS Library
+- Node.js
+- Github
+- MongoDB
+- Heroku
+- Express.js
 
 # Getting Started
 [Click to view page](https://soccerdreamteam-dd97a088112b.herokuapp.com/)
