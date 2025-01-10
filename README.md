@@ -15,7 +15,7 @@ This is a page where you can add edit and update a player to create a soccer dre
 - CardStarter CSS Library
 
 # Getting Started
-[Click to view page](https://github.com/AliSakibou685/soccer-dream-team)
+[Click to view page](https://soccerdreamteam-dd97a088112b.herokuapp.com/)
 
 # Next Steps
 repolish my page where I can input real soccer players api's and their avatars on the page.
